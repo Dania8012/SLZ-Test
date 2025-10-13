@@ -1,0 +1,31 @@
+mandatoryAccounts:
+  - name: Management
+    description: >-
+      The management (primary/root) account. Do not change the name field for this
+      mandatory account. Note, the account name key does not need to match the
+      AWS account name.
+    email: dania.ref96@gmail.com
+    organizationalUnit: Root
+    warm: false
+  - name: LogArchive
+    description: >-
+      The log archive account. Do not change the name field for this mandatory
+      account. Note, the account name key does not need to match the AWS account
+      name.
+    email: dania.ref96+log@gmail.com
+    organizationalUnit: Security
+    warm: false
+  - name: Audit
+    description: >-
+      The security audit account (also referred to as the audit account). Do not
+      change the name field for this mandatory account. Note, the account name
+      key does not need to match the AWS account name.
+    email: dania.ref96+audit@gmail.com
+    organizationalUnit: Security
+    warm: false
+workloadAccounts:
+  - name: CICD
+    description: CI/CD Account
+    email: dania.ref96+mgmt@gmail.com
+    organizationalUnit: Gov Management
+    warm: false
