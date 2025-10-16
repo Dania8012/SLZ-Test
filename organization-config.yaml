@@ -3,7 +3,6 @@ organizationalUnits:
   - name: Security
   - name: Infrastructure
   - name: Gov Management
-    ignore: true
 serviceControlPolicies: []
 taggingPolicies: []
 chatbotPolicies: []
