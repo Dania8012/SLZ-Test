@@ -29,13 +29,13 @@ workloadAccounts:
     email: dania.ref96+management@gmail.com
     organizationalUnit: Gov Shared Services
     warm: false
-  - name: Gov-Management
-    description: CI/CD Account
-    email: dania.ref96+mgmt@gmail.com
-    organizationalUnit: "Gov Shared Services/Gov Management"
-    warm: false
-  - name: gov-management
-    description: CI/CD Account
-    email: dania.ref96+devops@gmail.com
-    organizationalUnit: "Gov Shared Services/Gov Management"
-    warm: false
+  # - name: Gov-Management
+  #   description: CI/CD Account
+  #   email: dania.ref96+mgmt@gmail.com
+  #   organizationalUnit: "Gov Shared Services/Gov Management"
+  #   warm: false
+  # - name: gov-management
+  #   description: CI/CD Account
+  #   email: dania.ref96+devops@gmail.com
+  #   organizationalUnit: "Gov Shared Services/Gov Management"
+  #   warm: false
