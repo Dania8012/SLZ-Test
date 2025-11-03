@@ -36,3 +36,4 @@ logging:
     attachPolicyToIamRoles: []
 tags: []
 iamRoleSsmParameters: []
+useV2Stacks: true
