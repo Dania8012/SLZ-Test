@@ -4,7 +4,6 @@ organizationalUnits:
   - name: Infrastructure
   - name: "Gov Shared Services"
   - name: "Gov Shared Services/Gov Management"
-    ignore: true
 serviceControlPolicies: []
 taggingPolicies: []
 chatbotPolicies: []
