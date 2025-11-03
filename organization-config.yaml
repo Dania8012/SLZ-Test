@@ -2,7 +2,8 @@ enable: true
 organizationalUnits:
   - name: Security
   - name: Infrastructure
-  - name: Gov Management
+  - name: "Gov Shared Services"
+  - name: "Gov Shared Services/Gov Management"
 serviceControlPolicies: []
 taggingPolicies: []
 chatbotPolicies: []
