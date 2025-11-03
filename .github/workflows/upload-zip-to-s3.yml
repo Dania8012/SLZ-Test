@@ -30,4 +30,4 @@ jobs:
 
       - name: Upload zip to S3
         run: |
-          aws s3 cp aws-accelerator-config.zip s3://slz-config-131798512316-me-central-1/zipped/aws-accelerator-config.zip
+          aws s3 cp aws-accelerator-config.zip s3://slz-config-${{ secrets.AWS_ACCOUNT_ID }}-me-central-1/zipped/aws-accelerator-config.zip
