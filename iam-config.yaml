@@ -1,5 +1,19 @@
 providers: []
 policySets: []
 roleSets: []
-groupSets: []
-userSets: []
+groupSets:
+  - deploymentTargets:
+      organizationalUnits:
+        - Root
+    groups:
+      - name: BreakGlassAdministrators
+        policies:
+          awsManaged:
+            - AdministratorAccess
+userSets:
+  - deploymentTargets:
+      accounts:
+        - Management
+    users:
+      - username: breakGlassUser01
+        group: BreakGlassAdministrators

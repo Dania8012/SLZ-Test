@@ -3,6 +3,7 @@ organizationalUnits:
   - name: Security
   - name: Infrastructure
   - name: "Gov Shared Services"
+  - name: SharedServices
   - name: "Gov Shared Services/Gov Management"
     ignore: true
 serviceControlPolicies: []
