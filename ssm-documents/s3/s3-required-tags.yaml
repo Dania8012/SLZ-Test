@@ -1,0 +1,61 @@
+---
+schemaVersion: '0.3'
+description: "Add the 'DataClassification' tag to an S3 bucket if it's missing"
+assumeRole: "{{ AutomationAssumeRole }}"
+parameters:
+  BucketName:
+    type: String
+    description: "The name of the S3 bucket"
+  TagKey:
+    type: String
+    description: "Tag key to add (e.g., DataClassification)"
+    default: "DataClassification"
+  TagValue:
+    type: String
+    description: "Tag value to set (e.g., Confidential)"
+    default: "Confidential"
+  AutomationAssumeRole:
+    type: String
+    description: (Optional) The ARN of the role that allows Automation to perform the actions on your behalf.
+    default: ""
+    
+mainSteps:
+  - name: TagS3BucketIfMissing
+    action: aws:executeScript
+    inputs:
+      Runtime: python3.8
+      Handler: main
+      InputPayload:
+        BucketName: "{{ BucketName }}"
+        TagKey: "{{ TagKey }}"
+        TagValue: "{{ TagValue }}"
+      Script: |
+        import boto3
+
+        def main(event, context):
+            s3 = boto3.client("s3")
+            bucket = event["BucketName"]
+            tag_key = event["TagKey"]
+            tag_value = event["TagValue"]
+
+            # Get existing tags (if any)
+            try:
+                current_tags = s3.get_bucket_tagging(Bucket=bucket)["TagSet"]
+            except s3.exceptions.ClientError as e:
+                if e.response['Error']['Code'] == 'NoSuchTagSet':
+                    current_tags = []
+                elif e.response['Error']['Code'] == 'NoSuchBucket':
+                    return {"status": "error", "message": "Bucket does not exist."}
+                else:
+                    raise
+
+            keys = {t["Key"] for t in current_tags}
+            if tag_key not in keys:
+                current_tags.append({"Key": tag_key, "Value": tag_value})
+                s3.put_bucket_tagging(
+                    Bucket=bucket,
+                    Tagging={"TagSet": current_tags}
+                )
+                return {"status": "tag_added", "bucket": bucket}
+            else:
+                return {"status": "already_tagged", "bucket": bucket}

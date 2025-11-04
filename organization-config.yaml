@@ -6,6 +6,13 @@ organizationalUnits:
   - name: "Gov Shared Services/Gov Management"
     ignore: true
 serviceControlPolicies: []
-taggingPolicies: []
+# Ensured the values of the tag matching the required value
+taggingPolicies:
+  - name: TagPolicy
+    description: Organization Tagging Policy
+    policy: tagging-policies/org-tag-policy.json
+    deploymentTargets:
+      organizationalUnits:
+        - Root
 chatbotPolicies: []
 backupPolicies: []
