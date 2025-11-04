@@ -1,6 +1,3 @@
-deploymentTargets:
-  exclude:
-    - devops
 mandatoryAccounts:
   - name: Management
     description: >-
