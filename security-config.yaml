@@ -1,10 +1,10 @@
 centralSecurityServices:
   delegatedAdminAccount: Audit
   ebsDefaultVolumeEncryption:
-    enable: trye
+    enable: true
     excludeRegions: []
   s3PublicAccessBlock:
-    enable: trye
+    enable: true
     excludeAccounts: []
   scpRevertChangesConfig:
     enable: false
