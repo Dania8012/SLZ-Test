@@ -23,7 +23,7 @@ mainSteps:
   - name: TagS3BucketIfMissing
     action: aws:executeScript
     inputs:
-      Runtime: python3.9
+      Runtime: python3.13
       Handler: main
       InputPayload:
         BucketName: "{{ BucketName }}"
