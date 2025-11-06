@@ -36,14 +36,7 @@ centralSecurityServices:
         enable: true
   ssmAutomation:
     excludeRegions: []
-    documentSets:
-      - shareTargets:
-          organizationalUnits:
-            - Root
-        documents:
-          # Enforces Tagging
-          - name: S3-Enforce-Tagging
-            template: ssm-documents/s3/s3-required-tags.yaml
+    documentSets: []
 accessAnalyzer:
   enable: true
 iamPasswordPolicy:
@@ -66,28 +59,28 @@ awsConfig:
   ##################################################################################################################
   # Data Classification and tagging                                                                             #
   ##################################################################################################################
-        - name: m1-tagging-s3-bucket-required-tags-remediate
-          identifier: REQUIRED_TAGS
-          complianceResourceTypes:
-            - AWS::S3::Bucket
-          inputParameters:
-            tag1Key: "DataClassification"
-          remediation:
-            rolePolicyFile: custom-config-rules/roles/m1-bucket-enforce-required-tags.json
-            automatic: true
-            targetId: S3-Enforce-Tagging
-            retryAttemptSeconds: 60
-            maximumAutomaticAttempts: 5
-            parameters:
-              - name: BucketName
-                value: RESOURCE_ID
-                type: String
-              - name: TagKey
-                value: DataClassification
-                type: String
-              - name: TagValue
-                value: CompanyConfidential
-                type: String
+        # - name: m1-tagging-s3-bucket-required-tags-remediate
+        #   identifier: REQUIRED_TAGS
+        #   complianceResourceTypes:
+        #     - AWS::S3::Bucket
+        #   inputParameters:
+        #     tag1Key: "DataClassification"
+        #   remediation:
+        #     rolePolicyFile: custom-config-rules/roles/m1-bucket-enforce-required-tags.json
+        #     automatic: true
+        #     targetId: S3-Enforce-Tagging
+        #     retryAttemptSeconds: 60
+        #     maximumAutomaticAttempts: 5
+        #     parameters:
+        #       - name: BucketName
+        #         value: RESOURCE_ID
+        #         type: String
+        #       - name: TagKey
+        #         value: DataClassification
+        #         type: String
+        #       - name: TagValue
+        #         value: CompanyConfidential
+        #         type: String
 # Checks if your resources have the tags that you specify
         - name: m1-tagging-required-tags
           identifier: REQUIRED_TAGS
